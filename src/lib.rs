@@ -1,14 +1,24 @@
-/// Generate random number by custom
+//! # Gen Random
+//!
+//! `gen_random` is a lib for generating random number by custom its length and kind
+
+
 
 use rand::Rng;
 
+
+
+
+
+/// Custom length and kind of random number
 pub struct Custom {
-    /// length of random number or string
+    /// Length of random number
     length: usize,
+    /// Kind of random number
     kind: CharSetKind,
 }
 
-
+/// Kinds of random number
 pub enum CharSetKind {
     Number,
     Letter,
@@ -20,6 +30,7 @@ pub enum CharSetKind {
 }
 
 impl Custom {
+
     pub fn new(length: usize, kind: CharSetKind) -> Custom {
         Custom {
             length,
@@ -27,6 +38,16 @@ impl Custom {
         }
     }
 
+    /// Generate random number by custom its length and kind
+    ///
+    /// # Examples
+    ///
+    /// ```
+    ///
+    ///  let random = gen_random::Custom::new(5, gen_random::CharSetKind::Number).generate();
+    ///  assert_eq!(random, "12345".to_string())
+    ///
+    /// ```
     pub fn generate(&self) -> String {
         let charset = match self.kind {
             CharSetKind::Number => {
@@ -73,53 +94,3 @@ impl Custom {
     }
 }
 
-
-//#[cfg(test)]
-//mod tests {
-//    use crate::{CharSetKind, Custom};
-//
-//
-//    #[test]
-//    fn number() {
-//        let random = Custom::new(5, CharSetKind::Number).generate();
-//        assert_eq!(random, "a".to_string())
-//    }
-//
-//    #[test]
-//    fn letter() {
-//        let random = Custom::new(5, CharSetKind::Letter).generate();
-//        assert_eq!(random, "a".to_string())
-//    }
-//
-//    #[test]
-//    fn symbol() {
-//        let random = Custom::new(5, CharSetKind::Symbol).generate();
-//        assert_eq!(random, "a".to_string())
-//    }
-//
-//    #[test]
-//    fn number_and_letter() {
-//        let random = Custom::new(5, CharSetKind::NumberAndLetter).generate();
-//        assert_eq!(random, "a".to_string())
-//    }
-//
-//    #[test]
-//    fn number_and_symbol() {
-//        let random = Custom::new(5, CharSetKind::NumberAndSymbol).generate();
-//        assert_eq!(random, "a".to_string())
-//    }
-//
-//    #[test]
-//    fn letter_and_symbol() {
-//        let random = Custom::new(5, CharSetKind::LetterAndSymbol).generate();
-//        assert_eq!(random, "a".to_string())
-//    }
-//
-//    #[test]
-//    fn number_and_letter_and_symbol() {
-//        let random = Custom::new(10, CharSetKind::NumberLetterAndSymbol).generate();
-//        assert_eq!(random, "a".to_string())
-//    }
-//
-//
-//}
