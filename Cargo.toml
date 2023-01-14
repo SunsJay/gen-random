@@ -1,11 +1,12 @@
 [package]
 name = "gen_random"
-version = "0.1.0"
+version = "0.1.2"
 edition = "2021"
 license = "MIT"
 authors = ["SunsJay <sunsjay0806@gmail.com>"]
 description = "A lib for generating random number by custom its length and kind."
 keywords = ["random"]
+readme = "README.md"
 homepage = "https://github.com/SunsJay/gen-random"
 repository = "https://github.com/SunsJay/gen-random"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
