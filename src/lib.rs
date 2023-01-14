@@ -4,6 +4,10 @@
 
 use rand::Rng;
 
+const NUMBER: &'static [u8] = b"0123456789";
+const SYMBOL: &'static [u8] = b"~!@#$%^&*()_+-={}[]|:;<>,.?/\"\\";
+const LETTER: &'static [u8] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
 /// Custom length and kind of random number
 pub struct Custom {
     /// Length of random number
@@ -24,12 +28,8 @@ pub enum CharSetKind {
 }
 
 impl Custom {
-
     pub fn new(length: usize, kind: CharSetKind) -> Custom {
-        Custom {
-            length,
-            kind,
-        }
+        Custom { length, kind }
     }
 
     /// Generate random number by custom its length and kind
@@ -42,35 +42,13 @@ impl Custom {
     /// ```
     pub fn generate(&self) -> String {
         let charset = match self.kind {
-            CharSetKind::Number => {
-                b"0123456789".to_vec()
-            }
-            CharSetKind::Letter => {
-                b"ABCDEFGHIJKLMNOPQRSTUVWXYZ\
-                            abcdefghijklmnopqrstuvwxyz\
-                            ".to_vec()
-            }
-            CharSetKind::Symbol => {
-                b"~!@#$%^&*()_+-={}[]|:;<>,.?/\"\\".to_vec()
-            }
-            CharSetKind::NumberAndLetter => {
-                b"ABCDEFGHIJKLMNOPQRSTUVWXYZ\
-                            abcdefghijklmnopqrstuvwxyz\
-                            0123456789".to_vec()
-            }
-            CharSetKind::NumberAndSymbol => {
-                b"0123456789~!@#$%^&*()_+-={}[]|:;<>,.?/\"\\".to_vec()
-            }
-            CharSetKind::LetterAndSymbol => {
-                b"ABCDEFGHIJKLMNOPQRSTUVWXYZ\
-                            abcdefghijklmnopqrstuvwxyz\
-                           ~!@#$%^&*()_+-={}[]|:;<>,.?/\"\\".to_vec()
-            }
-            CharSetKind::NumberLetterAndSymbol => {
-                b"ABCDEFGHIJKLMNOPQRSTUVWXYZ\
-                            abcdefghijklmnopqrstuvwxyz\
-                            0123456789~!@#$%^&*()_+-={}[]|:;<>,.?/\"\\".to_vec()
-            }
+            CharSetKind::Number => NUMBER.to_vec(),
+            CharSetKind::Letter => LETTER.to_vec(),
+            CharSetKind::Symbol => SYMBOL.to_vec(),
+            CharSetKind::NumberAndLetter => [NUMBER, LETTER].concat().to_vec(),
+            CharSetKind::NumberAndSymbol => [NUMBER, SYMBOL].concat().to_vec(),
+            CharSetKind::LetterAndSymbol => [LETTER, SYMBOL].concat().to_vec(),
+            CharSetKind::NumberLetterAndSymbol => [NUMBER, LETTER, SYMBOL].concat().to_vec(),
         };
 
         let mut rng = rand::thread_rng();
