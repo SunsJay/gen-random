@@ -2,13 +2,7 @@
 //!
 //! `gen_random` is a lib for generating random number by custom its length and kind
 
-
-
 use rand::Rng;
-
-
-
-
 
 /// Custom length and kind of random number
 pub struct Custom {
@@ -43,10 +37,8 @@ impl Custom {
     /// # Examples
     ///
     /// ```
-    ///
     ///  let random = gen_random::Custom::new(5, gen_random::CharSetKind::Number).generate();
     ///  assert_eq!(random, "12345".to_string())
-    ///
     /// ```
     pub fn generate(&self) -> String {
         let charset = match self.kind {
