@@ -1,6 +1,7 @@
 //! # Gen Random
 //!
-//! `gen_random` is a lib for generating random number by custom its length and kind
+//! `gen_random` is a lib for generating random number by custom its length and kind.
+//! It's very easy to generate different randon number, Number/Letter/Symbol or collection of them.
 
 use rand::Rng;
 

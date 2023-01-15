@@ -1,6 +1,6 @@
 [package]
 name = "gen_random"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2021"
 license = "MIT"
 authors = ["SunsJay <sunsjay0806@gmail.com>"]
